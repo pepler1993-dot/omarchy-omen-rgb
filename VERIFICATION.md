@@ -1,4 +1,21 @@
-# Aktueller Prüfstand: dauerhaft eingerichtet, 2026-09-05
+# Veröffentlichungsvorbereitung 1.1.0, 2026-09-06
+
+- Gaming RGB und separate WASD-Zone am Laptop bestätigt; 100 % RGB-Skalierung.
+- Panel nach Shell-Neustart visuell geprüft; Vorschau zeigt nur das Plugin.
+- Installation für einen ausdrücklich ausgewählten Desktop-Benutzer vorbereitet;
+  Dienstvorlage enthält keine fest eingetragenen persönlichen Home-Pfade mehr.
+- 16 Python-Tests bestanden, einschließlich Benutzerprüfung, Unit-Escaping,
+  unveränderndem Probelauf, Sicherung bestehender Dateien und Symlink-Ablehnung.
+- Omarchy-Manifestprüfung und Python-Syntaxprüfung erfolgreich.
+- Generierte Dienstdatei mit systemd-analyze verify geprüft; keine Unit-Fehler.
+- Kernelmodul aus dem veröffentlichten Quellstand für 7.1.9-arch1-2 gebaut.
+- Verallgemeinerter Installer nicht auf dem laufenden System ausgeführt;
+  bisherige lokale Treiberinstallation unverändert. Kein neuer Boot-Test.
+
+Die folgenden Abschnitte dokumentieren historische lokale Zustände; sie sind
+keine Einrichtungsanleitung. Die aktuelle Anleitung steht in README.md.
+
+# Historischer Prüfstand: dauerhaft eingerichtet, 2026-09-05
 
 - Nutzer hat DKMS-Installation, automatisches Laden und den Systemdienst ausdrücklich freigegeben.
 - DKMS meldet kevin-omen-rgb/0.4 für 7.1.9-arch1-2 als installiert; Modul wurde gebaut und signiert.

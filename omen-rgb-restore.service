@@ -1,15 +1,15 @@
 [Unit]
-Description=Restore OMEN keyboard colors and allow Kevin to adjust them
+Description=Restore OMEN keyboard colors for the selected desktop user
 After=systemd-modules-load.service
 ConditionPathExists=/sys/devices/platform/omen_rgb/rgb_zones/colors
 
 [Service]
 Type=oneshot
-User=kevin
-Environment=XDG_STATE_HOME=/home/kevin/.local/state
-ExecStartPre=+/usr/bin/chown kevin /sys/devices/platform/omen_rgb/rgb_zones/colors
+User=@USER@
+Environment="XDG_STATE_HOME=@HOME@/.local/state"
+ExecStartPre=+/usr/bin/chown @USER@ /sys/devices/platform/omen_rgb/rgb_zones/colors
 ExecStartPre=+/usr/bin/chmod 0644 /sys/devices/platform/omen_rgb/rgb_zones/colors
-ExecStart=/usr/bin/python3 /home/kevin/.config/omarchy/plugins/kevin.omen-rgb/rgb.py restore
+ExecStart=/usr/bin/python3 /usr/lib/kevin-omen-rgb/rgb.py restore
 RemainAfterExit=yes
 
 [Install]

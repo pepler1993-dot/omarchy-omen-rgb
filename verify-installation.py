@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Reload the installed module and verify boot-service restoration without reboot."""
+import argparse
 import json
 import os
 from pathlib import Path
 import re
 import subprocess
+import pwd
 
 if os.geteuid() != 0:
     raise SystemExit('Root is needed to reload the installed module.')
@@ -12,8 +14,19 @@ if os.geteuid() != 0:
 def run(*args):
     subprocess.run(args, check=True)
 
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument('--user', required=True, help='Desktop account selected during installation')
+args = parser.parse_args()
+account = pwd.getpwnam(args.user)
+configured_user = subprocess.check_output(
+    ['/usr/bin/systemctl', 'show', 'omen-rgb-restore.service', '--property=User', '--value'],
+    text=True).strip()
+if configured_user != account.pw_name:
+    raise SystemExit('The selected account does not match the installed restore service.')
 device = Path('/sys/devices/platform/omen_rgb/rgb_zones/colors')
-state = Path('/home/kevin/.local/state/omen-rgb/colors.json')
+state = Path(account.pw_dir) / '.local/state/omen-rgb/colors.json'
+if not state.is_file():
+    raise SystemExit('Save a color profile in the panel before running this test.')
 run('/usr/bin/modprobe', '-r', 'omen_rgb')
 try:
     run('/usr/bin/modprobe', 'omen_rgb')

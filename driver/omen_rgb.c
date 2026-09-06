@@ -1,4 +1,7 @@
 // SPDX-License-Identifier: GPL-2.0
+/* Modified by Kevin Pepler, 2026-09-05: response validation, board 8C77
+ * restriction and atomic four-zone writes. Original reference: vendor/omen_rgb.c.
+ */
 /**
  * @file omen_rgb.c
  * @brief Minimal kernel module to control the 4-zone keyboard RGB of HP Omen
