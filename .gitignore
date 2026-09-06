@@ -1,0 +1,16 @@
+# Python caches
+__pycache__/
+*.py[cod]
+
+# Local configuration backups
+/backups/
+
+# Kernel module build output
+/driver/*.o
+/driver/*.ko
+/driver/*.mod
+/driver/*.mod.c
+/driver/.*.cmd
+/driver/Module.symvers
+/driver/modules.order
+/driver/.tmp_versions/
