@@ -120,7 +120,7 @@ Panel {
                             border.color: root.barForeground
                             Text {
                                 anchors.centerIn: parent
-                                text: "Zone " + (index + 1)
+                                text: index === 3 ? "WASD" : "Zone " + (index + 1)
                                 color: parent.color.r * 0.299 + parent.color.g * 0.587 + parent.color.b * 0.114 > 0.55 ? "#161616" : "#FFFFFF"
                                 font.family: Style.font.family
                                 font.pixelSize: Style.font.bodySmall
@@ -186,15 +186,14 @@ Panel {
                     Button { text: "Ozean"; foreground: root.barForeground; onClicked: root.preset(["124CFF", "008DFF", "00CDDB", "61F4D1"]) }
                     Button { text: "Abendrot"; foreground: root.barForeground; onClicked: root.preset(["FF4938", "FF8D38", "F44790", "8B45CF"]) }
                     Button { text: "Spektrum"; foreground: root.barForeground; onClicked: root.preset(["FF4040", "FFD43B", "53E87A", "488CFF"]) }
-                }
-                Button {
-                    width: parent.width
-                    text: "Gaming-Fokus · 45 %"
-                    tooltipText: "Ein roter Akzent und drei gedämpfte violette Zonen"
-                    foreground: root.barForeground
-                    onClicked: {
-                        root.preset(["FF3030", "602880", "402060", "302048"])
-                        root.brightness = 45
+                    Button {
+                        text: "Gaming RGB"
+                        tooltipText: "Cyan, Violett und Pink · WASD in Orange"
+                        foreground: root.barForeground
+                        onClicked: {
+                            root.preset(["00E5FF", "8000FF", "FF00CC", "FF8000"])
+                            root.brightness = 100
+                        }
                     }
                 }
                 PanelSeparator { foreground: root.barForeground }
@@ -213,13 +212,6 @@ Panel {
                     integer: true
                     step: 5
                     onMoved: function(value) { root.brightness = Math.round(value); root.dirty = true }
-                }
-                Text {
-                    text: "Statische Farben · Helligkeit über RGB-Abstufung"
-                    color: root.barForeground
-                    font.family: Style.font.family
-                    font.pixelSize: Style.font.bodySmall
-                    opacity: 0.65
                 }
                 Row {
                     width: parent.width

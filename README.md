@@ -2,7 +2,8 @@
 
 Ein lokales Omarchy-Panel für vier RGB-Zonen: Farbpalette, eigene Hex-Farben,
 Einzelfarben pro Zone, Warmweiß, vier statische Farbvorlagen und RGB-basierte Helligkeit.
-Die Zonen heißen bewusst 1–4; ihre physische Zuordnung muss am Laptop geprüft werden.
+Die vierte Zone ist WASD; dies wurde am lokalen Laptop visuell bestätigt.
+Die übrigen Bereiche heißen Zone 1–3.
 Es gibt keine Animationen und keine Steuerung einzelner Tasten.
 
 ## Aktueller Stand
@@ -28,11 +29,17 @@ Profil in `~/.local/state/omen-rgb/colors.json`. Ohne Treiber bleibt dieser Knop
 gesperrt. „Neu einlesen“ verwirft die Vorschau und liest den Hardwarezustand ein.
 Fn+F4 bleibt die vorhandene hardwareseitige Ein-/Aus-Steuerung.
 
-„Gaming-Fokus · 45 %“ wählt für die vier Zonen `FF3030`, `602880`,
-`402060`, `302048` und setzt die Helligkeit auf 45 %. Damit hebt sich ein roter
-Akzent von drei gedämpften violetten Zonen ab. Die Vorlage wird zunächst nur
-in der Vorschau angezeigt; „Anwenden & speichern“ übernimmt sie. Einzelne
-WASD-Tasten können mit der Vier-Zonen-Hardware nicht separat eingefärbt werden.
+„Gaming RGB“ steht bei den anderen Farbvorlagen und wählt für die vier Zonen `00E5FF`, `8000FF`,
+`FF00CC`, `FF8000` und setzt die Helligkeit auf 100 %. Cyan, Violett und Pink
+geben den großen Bereichen einen kräftigen RGB-Look. WASD hebt sich in Orange
+ab. Alle Farben werden ohne Dimmung ausgegeben.
+Die [OMEN-Zonenbelegung von omenctl](https://github.com/SwarritSrivastava/omenctl#zone-map)
+ordnet die vierte Zone (Treiberindex 3) den WASD-Tasten zu; der Benutzer hat
+diese Zuordnung am lokalen Laptop bestätigt.
+Die Vorlage wird zunächst nur
+in der Vorschau angezeigt; „Anwenden & speichern“ übernimmt sie. WASD kann als
+gemeinsame Zone hervorgehoben werden; die vier Tasten erhalten dieselbe Farbe.
+Eine freie Farbwahl für jede einzelne Taste wird vom Treiber nicht angeboten.
 
 „Helligkeit“ skaliert RGB-Komponenten; es ist kein nachgewiesener Hardware-Dimmer.
 Beim Absenken auf null bleiben die Ausgangsfarben im gespeicherten Profil erhalten.
